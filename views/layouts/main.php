@@ -51,7 +51,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>'
+                    . '</li>',
+            ['label' => 'Таск-менеджер', 'url' => ['/tasks/task/index']],
+
         ]
     ]);
     NavBar::end();
