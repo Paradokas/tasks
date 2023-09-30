@@ -1,5 +1,8 @@
 <?php
 
+use app\modules\tasks\controllers\api\TaskController;
+use app\modules\tasks\controllers\api\TicketController;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -10,6 +13,11 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'tasks' => [
+            'class' => 'app\modules\tasks\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -42,14 +50,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => TaskController::class,
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => TicketController::class,
+                ],
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
