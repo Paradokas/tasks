@@ -1,17 +1,9 @@
-version: '3'
+version: '2'
 services:
-  web:
-    build: .
-    ports:
-      - "80:80"
+  php:
+    image: yiisoftware/yii2-php:7.4-apache
     volumes:
-      - .:/var/www/html
-    depends_on:
-      - db
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: your_db_name
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
     ports:
-      - "3306:3306"
+      - '8000:80'
